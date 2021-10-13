@@ -84,11 +84,17 @@ int main(int argc, char** argv)
     std::cout << "Arming..." << '\n';
     const Action::Result arm_result = action.arm();
     
-    std::cout<<clock.now;
     
     if (arm_result != Action::Result::Success) {  
         std::cout << "Arming failed:" << arm_result <<  '\n';
         return 1; //Exit if arming fails
+    }
+
+    //int time=&clock.now;
+    //std::cout<<clock.now;
+    //int timer=clock.now;
+    while(clock.now<10){
+        std::cout<<clock.now;
     }
 
 
