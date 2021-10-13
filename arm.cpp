@@ -8,6 +8,7 @@
 #include <mavsdk/plugins/action/action.h>
 #include <iostream>
 #include <thread>
+#include <chrono>
 
 using namespace mavsdk;
 using namespace std::this_thread;
@@ -56,6 +57,9 @@ std::shared_ptr<System> get_system(Mavsdk& mavsdk)
 
 int main(int argc, char** argv)
 {
+
+    std::chrono::steady_clock clock; 
+
     if (argc != 2) {
         usage(argv[0]);
         return 1;
@@ -79,11 +83,15 @@ int main(int argc, char** argv)
     // Arm vehicle
     std::cout << "Arming..." << '\n';
     const Action::Result arm_result = action.arm();
-
+    
+    std::cout<<clock.now;
+    
     if (arm_result != Action::Result::Success) {  
         std::cout << "Arming failed:" << arm_result <<  '\n';
         return 1; //Exit if arming fails
     }
+
+
 
     
     return 0;
