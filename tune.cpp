@@ -74,62 +74,15 @@ int main(int argc, char** argv)
         return 1;
     }
 
-    // Instantiate plugin.
-    Tune tune(system);
+    // Arm vehicle
+    std::cout << "Arming..." << '\n';
+    const Action::Result arm_result = action.arm();
 
-    std::vector<Tune::SongElement> song_elements;
-    song_elements.push_back(Tune::SongElement::Duration4);
-    song_elements.push_back(Tune::SongElement::NoteG);
-    song_elements.push_back(Tune::SongElement::NoteA);
-    song_elements.push_back(Tune::SongElement::NoteB);
-    song_elements.push_back(Tune::SongElement::Flat);
-    song_elements.push_back(Tune::SongElement::OctaveUp);
-    song_elements.push_back(Tune::SongElement::Duration1);
-    song_elements.push_back(Tune::SongElement::NoteE);
-    song_elements.push_back(Tune::SongElement::Flat);
-    song_elements.push_back(Tune::SongElement::OctaveDown);
-    song_elements.push_back(Tune::SongElement::Duration4);
-    song_elements.push_back(Tune::SongElement::NotePause);
-    song_elements.push_back(Tune::SongElement::NoteF);
-    song_elements.push_back(Tune::SongElement::NoteG);
-    song_elements.push_back(Tune::SongElement::NoteA);
-    song_elements.push_back(Tune::SongElement::OctaveUp);
-    song_elements.push_back(Tune::SongElement::Duration2);
-    song_elements.push_back(Tune::SongElement::NoteD);
-    song_elements.push_back(Tune::SongElement::NoteD);
-    song_elements.push_back(Tune::SongElement::OctaveDown);
-    song_elements.push_back(Tune::SongElement::Duration4);
-    song_elements.push_back(Tune::SongElement::NotePause);
-    song_elements.push_back(Tune::SongElement::NoteE);
-    song_elements.push_back(Tune::SongElement::Flat);
-    song_elements.push_back(Tune::SongElement::NoteF);
-    song_elements.push_back(Tune::SongElement::NoteG);
-    song_elements.push_back(Tune::SongElement::OctaveUp);
-    song_elements.push_back(Tune::SongElement::Duration1);
-    song_elements.push_back(Tune::SongElement::NoteC);
-    song_elements.push_back(Tune::SongElement::OctaveDown);
-    song_elements.push_back(Tune::SongElement::Duration4);
-    song_elements.push_back(Tune::SongElement::NotePause);
-    song_elements.push_back(Tune::SongElement::NoteA);
-    song_elements.push_back(Tune::SongElement::OctaveUp);
-    song_elements.push_back(Tune::SongElement::NoteC);
-    song_elements.push_back(Tune::SongElement::OctaveDown);
-    song_elements.push_back(Tune::SongElement::NoteB);
-    song_elements.push_back(Tune::SongElement::Flat);
-    song_elements.push_back(Tune::SongElement::Duration2);
-    song_elements.push_back(Tune::SongElement::NoteG);
-
-    const int tempo = 200;
-
-    Tune::TuneDescription tune_description;
-    tune_description.song_elements = song_elements;
-    tune_description.tempo = tempo;
-
-    const auto result = tune.play_tune(tune_description);
-    if (result != Tune::Result::Success) {
-        std::cerr << "Tune result: " << result << '\n';
-        return 1;
+    if (arm_result != Action::Result::Success) {  
+        std::cout << "Arming failed:" << arm_result <<  '\n';
+        return 1; //Exit if arming fails
     }
 
+    
     return 0;
 }
