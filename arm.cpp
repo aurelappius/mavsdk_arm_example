@@ -90,14 +90,6 @@ int main(int argc, char** argv)
         return 1; //Exit if arming fails
     }
 
-    //int time=&clock.now;
-    //std::cout<<clock.now;
-    //int timer=clock.now;
-    while(clock.now<10){
-        std::cout<<clock.now;
-    }
-
-
 
     
     return 0;
