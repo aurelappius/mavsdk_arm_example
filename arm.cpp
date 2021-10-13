@@ -5,7 +5,7 @@
 #include <cstdint>
 #include <future>
 #include <mavsdk/mavsdk.h>
-#include <mavsdk/plugins/tune/tune.h>
+#include <mavsdk/plugins/action/action.h>
 #include <iostream>
 #include <thread>
 
@@ -73,6 +73,8 @@ int main(int argc, char** argv)
     if (!system) {
         return 1;
     }
+    
+    auto action = Action(system);
 
     // Arm vehicle
     std::cout << "Arming..." << '\n';
