@@ -79,26 +79,54 @@ int main(int argc, char** argv)
     }
     
     auto action = Action(system);
+    Action::Result arm_result;
+    Action::Result disarm_result;
+    Action::Result takeoff_result;
+    Action::Result land_result;
 
-    // Arm vehicle
-    std::cout << "Arming..." << '\n';
-    const Action::Result arm_result = action.arm();
-    
-    
-    if (arm_result != Action::Result::Success) {  
-        std::cout << "Arming failed:" << arm_result <<  '\n';
-        return 1; //Exit if arming fails
+    char cmd = 'n';
+    while(cmd!='q'){
+        switch(cmd){
+            case 'n': //do nothing
+                break;
+            case 'a': //arming 
+                std::cout << "Arming..." << '\n';
+                arm_result=arm_result = action.arm();
+                if (arm_result != Action::Result::Success) {  
+                    std::cout << "Arming failed:" << arm_result <<  '\n';
+                return 1; //Exit if arming fails
+                }
+                break;
+            case 'd':
+                std::cout << "Disarming..." << '\n';
+                disarm_result = action.disarm();
+                if (disarm_result != Action::Result::Success) {  
+                    std::cout << "Disarming failed:" << disarm_result <<  '\n';
+                return 1; //Exit if arming fails
+                }
+                break;
+            case 't':
+                std::cout << "Taking off..." << '\n';
+                takeoff_result = action.takeoff();
+                if (takeoff_result != Action::Result::Success) {  
+                    std::cout << "Takeoff failed:" << takeoff_result <<  '\n';
+                return 1; //Exit if arming fails
+                }
+                break;
+            case 'l':
+                std::cout << "Landing..." << '\n';
+                land_result = action.land();
+                if (land_result != Action::Result::Success) {  
+                    std::cout << "Landing failed:" << land_result <<  '\n';
+                return 1; //Exit if arming fails
+                }
+                break;
+            default:
+                std::cout<<"dont know this command: type q to quit"<<'\n';
+        }
+        std::cin>>cmd;
     }
 
-    //int time=&clock.now;
-    //std::cout<<clock.now;
-    //int timer=clock.now;
-    while(clock.now<10){
-        std::cout<<clock.now;
-    }
-
-
-
-    
+    std::cout<<"quitting..."<<'\n';
     return 0;
 }
