@@ -13,6 +13,8 @@ find_package(MAVSDK REQUIRED)
 
 target_link_libraries(arm
     MAVSDK::mavsdk_action
+    MAVSDK::mavsdk_telemetry
+    #MAVSDK::mavsdk_offboard
     MAVSDK::mavsdk
 )
 
