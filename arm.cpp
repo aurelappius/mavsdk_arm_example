@@ -113,34 +113,34 @@ int main(int argc, char** argv)
             case 'a': //arming 
                 std::cout << "Arming..." << '\n';
                 arm_result=arm_result = action.arm();
-                if (arm_result != Action::Result::Success) {  
-                    std::cout << "Arming failed:" << arm_result <<  '\n';
-                    return 1; //Exit if arming fails
-                }
+                //if (arm_result != Action::Result::Success) {  
+                std::cout << "Arming result:" << arm_result <<  '\n';
+                //return 1; //Exit if arming fails
+                //}
                 break;
             case 'd':
                 std::cout << "Disarming..." << '\n';
                 disarm_result = action.disarm();
-                if (disarm_result != Action::Result::Success) {  
-                    std::cout << "Disarming failed:" << disarm_result <<  '\n';
-                    return 1; //Exit if arming fails
-                }
+                //if (disarm_result != Action::Result::Success) {  
+                std::cout << "Disarming result:" << disarm_result <<  '\n';
+                //return 1; //Exit if arming fails
+                //}
                 break;
             case 't':
                 std::cout << "Taking off..." << '\n';
                 takeoff_result = action.takeoff();
-                if (takeoff_result != Action::Result::Success) {  
-                    std::cout << "Takeoff failed:" << takeoff_result <<  '\n';
-                    return 1; //Exit if arming fails
-                }
+                //if (takeoff_result != Action::Result::Success) {  
+                 std::cout << "Takeoff result:" << takeoff_result <<  '\n';
+                //return 1; //Exit if arming fails
+                //}
                 break;
             case 'l':
                 std::cout << "Landing..." << '\n';
                 land_result = action.land();
-                if (land_result != Action::Result::Success) {  
-                    std::cout << "Landing failed:" << land_result <<  '\n';
-                    return 1; //Exit if arming fails
-                }
+                //if (land_result != Action::Result::Success) {  
+                std::cout << "Landing result:" << land_result <<  '\n';
+                //return 1; //Exit if arming fails
+                //}
                 break;
             case 'p':
                 //x_orbit = Telemetry::Position::latitude_deg{double(NAN)};
