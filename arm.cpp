@@ -142,18 +142,13 @@ int main(int argc, char** argv)
                 //return 1; //Exit if arming fails
                 //}
                 break;
-            case 'p':
-                //x_orbit = Telemetry::Position::latitude_deg{double(NAN)};
-                //y_orbit = Telemetry::Position::longitude_deg{double(NAN)};
-                //z_orbit = Telemetry::Position::absolute_altitude_m{ float(NAN)};
-                break;
             case 'o':
                 std::cout << "Orbiting..." << '\n';
                 orbit_result = action.do_orbit(radius,velocity,yaw_behavior,x_orbit,y_orbit,z_orbit);
-                if (land_result != Action::Result::Success) {  
-                    std::cout << "Landing failed:" << land_result <<  '\n';
-                    return 1; //Exit if arming fails
-                }
+                //if (land_result != Action::Result::Success) {  
+                std::cout << "Orbit result:" << orbit_result <<  '\n';
+                //return 1; //Exit if arming fails
+                //}
                 break;
             default:
                 std::cout<<"dont know this command: type q to quit"<<'\n';
